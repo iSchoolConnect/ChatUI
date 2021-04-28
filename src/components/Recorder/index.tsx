@@ -93,16 +93,47 @@ export const Recorder = React.forwardRef<RecorderHandle, RecorderProps>((props, 
       }
     }
 
+    function handleMouseDown(e: MouseEvent) {
+      if (e.cancelable) {
+        e.preventDefault();
+      }
+      ts = Date.now();
+      setStatus('recording');
+      if (onStart) {
+        onStart();
+      }
+    }
+
+    function handleMouseLeave() {
+      if (!ts) return;
+      setStatus('inited');
+      if (onCancel) {
+        onCancel();
+      }
+    }
+
+    function handleMouseUp() {
+      if (!ts) return;
+      setStatus('inited');
+      doEnd();
+    }
+
     wrapper.addEventListener('touchstart', handleTouchStart);
     wrapper.addEventListener('touchmove', handleTouchMove, passive);
     wrapper.addEventListener('touchend', handleTouchEnd);
     wrapper.addEventListener('touchcancel', handleTouchEnd);
+    wrapper.addEventListener('mousedown', handleMouseDown);
+    wrapper.addEventListener('mouseleave', handleMouseLeave);
+    wrapper.addEventListener('mouseup', handleMouseUp);
 
     return () => {
       wrapper.removeEventListener('touchstart', handleTouchStart);
       wrapper.removeEventListener('touchmove', handleTouchMove);
       wrapper.removeEventListener('touchend', handleTouchEnd);
       wrapper.removeEventListener('touchcancel', handleTouchEnd);
+      wrapper.removeEventListener('mousedown', handleMouseDown);
+      wrapper.removeEventListener('mouseleave', handleMouseLeave);
+      wrapper.removeEventListener('mouseup', handleMouseUp);
     };
   }, []);
 

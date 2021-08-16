@@ -95,7 +95,7 @@ export const MessageContainer = React.forwardRef<MessageContainerHandle, Message
     }
 
     return (
-      <div className="MessageContainer" ref={messagesRef} tabIndex={-1}>
+      <div className="MessageContainer" ref={messagesRef}>
         {renderBeforeMessageList && renderBeforeMessageList()}
         <PullToRefresh
           onRefresh={onRefresh}
@@ -103,7 +103,7 @@ export const MessageContainer = React.forwardRef<MessageContainerHandle, Message
           loadMoreText={loadMoreText}
           ref={scroller}
         >
-          <div className="MessageList">
+          <div className="MessageList" tabindex="0">
             {messages.map((msg) => (
               <Message {...msg} renderMessageContent={renderMessageContent} key={msg._id} />
             ))}

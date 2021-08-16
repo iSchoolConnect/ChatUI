@@ -69,6 +69,7 @@ export const ScrollView = React.forwardRef<ScrollViewHandle, ScrollViewProps<any
 
   return (
     <div
+      tabindex="0"
       className={clsx(
         'ScrollView',
         {
@@ -82,7 +83,7 @@ export const ScrollView = React.forwardRef<ScrollViewHandle, ScrollViewProps<any
       {...other}
     >
       {hasControls && (
-        <IconButton className="ScrollView-control" icon="chevron-left" onClick={handlePrev} />
+        <IconButton tabindex="-1" className="ScrollView-control" icon="chevron-left" onClick={handlePrev} />
       )}
       <div className="ScrollView-scroller" ref={scrollerRef} onScroll={onScroll}>
         <div className="ScrollView-inner">
@@ -99,8 +100,9 @@ export const ScrollView = React.forwardRef<ScrollViewHandle, ScrollViewProps<any
         </div>
       </div>
       {hasControls && (
-        <IconButton className="ScrollView-control" icon="chevron-right" onClick={handleNext} />
-      )}
-    </div>
-  );
-});
+        <IconButton tabindex="-1" className="ScrollView-control" icon="chevron-right" onClick={handleNext} />
+        )}
+        </div>
+        );
+      });
+      

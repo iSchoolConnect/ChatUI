@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 import React, { useRef, useImperativeHandle } from 'react';
 import clsx from 'clsx';
 import { Item, ScrollViewItemProps } from './Item';
@@ -69,7 +70,6 @@ export const ScrollView = React.forwardRef<ScrollViewHandle, ScrollViewProps<any
 
   return (
     <div
-      tabindex="0"
       className={clsx(
         'ScrollView',
         {
@@ -83,9 +83,9 @@ export const ScrollView = React.forwardRef<ScrollViewHandle, ScrollViewProps<any
       {...other}
     >
       {hasControls && (
-        <IconButton tabindex="-1" className="ScrollView-control" icon="chevron-left" onClick={handlePrev} />
+        <IconButton tabIndex={-1} className="ScrollView-control" icon="chevron-left" onClick={handlePrev} />
       )}
-      <div className="ScrollView-scroller" ref={scrollerRef} onScroll={onScroll}>
+      <div tabIndex={0} className="ScrollView-scroller" ref={scrollerRef} onScroll={onScroll}>
         <div className="ScrollView-inner">
           {data.map((item, i) => (
             <Item item={item} effect={effect} onIntersect={onIntersect} key={getItemKey(item, i)}>
@@ -100,7 +100,7 @@ export const ScrollView = React.forwardRef<ScrollViewHandle, ScrollViewProps<any
         </div>
       </div>
       {hasControls && (
-        <IconButton tabindex="-1" className="ScrollView-control" icon="chevron-right" onClick={handleNext} />
+        <IconButton tabIndex={-1} className="ScrollView-control" icon="chevron-right" onClick={handleNext} />
         )}
         </div>
         );

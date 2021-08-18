@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 import React, { useState, useEffect, useRef, useImperativeHandle } from 'react';
 import clsx from 'clsx';
 import { Flex } from '../Flex';
@@ -176,7 +177,7 @@ export const Recorder = React.forwardRef<RecorderHandle, RecorderProps>((props, 
           <span>{trans(isCancel ? 'release2cancel' : 'releaseOrSwipe')}</span>
         </Flex>
       )}
-      <div className="Recorder-btn" role="button" aria-label={trans('hold2talk')} tabindex="0">
+      <div className="Recorder-btn" role="button" aria-label={trans('hold2talk')} tabIndex={0}>
         <span>{trans(btnTextMap[status])}</span>
       </div>
     </div>

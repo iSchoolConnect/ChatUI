@@ -8,15 +8,26 @@ export default {
       YT: '昨天 HH:mm', // 昨天 00:32
     },
   },
+  Composer: {
+    send: '发送',
+  },
   SendConfirm: {
     title: '发送图片',
     send: '发送',
     cancel: '取消',
+  },
+  RateActions: {
+    up: '赞同',
+    down: '反对',
   },
   Recorder: {
     hold2talk: '按住 说话',
     release2send: '松开 发送',
     releaseOrSwipe: '松开发送，上滑取消',
     release2cancel: '松开手指，取消发送',
+  },
+  ScrollView: {
+    prev: '上一页',
+    next: '下一页',
   },
 };

@@ -1,12 +1,14 @@
 /* eslint-disable jsx-a11y/no-noninteractive-tabindex */
-import React, { useState, useEffect, useRef, useImperativeHandle } from 'react';
+import React, { useState, useEffect, useRef, useImperativeHandle, useCallback } from 'react';
 import clsx from 'clsx';
 import { Flex } from '../Flex';
 import { Icon } from '../Icon';
 import { useLocale } from '../LocaleProvider';
 import canUse from '../../utils/canUse';
 
-const passive = canUse('passiveListener') ? { passive: false } : false;
+const canPassive = canUse('passiveListener');
+const listenerOpts = canPassive ? { passive: true } : false;
+const listenerOptsWithoutPassive = canPassive ? { passive: false } : false;
 const MOVE_INTERVAL = 80;
 
 interface ButtonTextMap {
@@ -41,12 +43,12 @@ export const Recorder = React.forwardRef<RecorderHandle, RecorderProps>((props, 
   const btnRef = useRef<HTMLDivElement>(null);
   const { trans } = useLocale('Recorder');
 
-  function doEnd() {
+  const doEnd = useCallback(() => {
     const duration = Date.now() - ts;
     if (onEnd) {
       onEnd({ duration });
     }
-  }
+  }, [onEnd]);
 
   useImperativeHandle(ref, () => ({
     stop() {
@@ -140,8 +142,8 @@ export const Recorder = React.forwardRef<RecorderHandle, RecorderProps>((props, 
       }
     }
 
-    wrapper.addEventListener('touchstart', handleTouchStart);
-    wrapper.addEventListener('touchmove', handleTouchMove, passive);
+    wrapper.addEventListener('touchstart', handleTouchStart, listenerOptsWithoutPassive);
+    wrapper.addEventListener('touchmove', handleTouchMove, listenerOpts);
     wrapper.addEventListener('touchend', handleTouchEnd);
     wrapper.addEventListener('touchcancel', handleTouchEnd);
     wrapper.addEventListener('mousedown', handleMouseDown);
@@ -159,7 +161,7 @@ export const Recorder = React.forwardRef<RecorderHandle, RecorderProps>((props, 
       wrapper.removeEventListener('mouseleave', handleMouseLeave);
       wrapper.removeEventListener('mouseup', handleMouseUp);
     };
-  }, []);
+  }, [doEnd, onCancel, onStart]);
 
   const isCancel = status === 'willCancel';
   const wavesStyle = { transform: `scale(${(volume || 1) / 100 + 1})` };

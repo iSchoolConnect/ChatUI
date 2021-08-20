@@ -21,15 +21,17 @@ LocaleProvider.defaultProps = {
   locale: DEFAULT_LOCALE,
 };
 
-const useLocale = (comp?: string) => {
+const useLocale = (comp?: string, fallback?: any) => {
   const localeContext = useContext(LocaleContext);
-  const { locale, locales } = localeContext;
+  const { locale, locales } = localeContext || {};
   const defaultStrings =
     (locale && (defaultLocales as ILocales)[locale]) || defaultLocales[DEFAULT_LOCALE];
   let strings = locales ? { ...defaultStrings, ...locales } : defaultStrings;
 
-  if (comp) {
-    strings = strings[comp];
+  if (!localeContext) {
+    strings = fallback;
+  } else if (comp) {
+    strings = strings[comp] || {};
   }
 
   return {

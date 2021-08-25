@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 import React, { useState, useEffect, useRef, useImperativeHandle } from 'react';
 import clsx from 'clsx';
 import { Flex } from '../Flex';

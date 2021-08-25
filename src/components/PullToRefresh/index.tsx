@@ -28,9 +28,7 @@ type PullToRefreshState = {
 
 export class PullToRefresh extends React.Component<PullToRefreshProps, PullToRefreshState> {
   wrapperRef = createRef<HTMLDivElement>();
-
   contentRef = createRef<HTMLDivElement>();
-
   startY = 0;
 
   useFallback: boolean;

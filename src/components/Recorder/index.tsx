@@ -118,6 +118,27 @@ export const Recorder = React.forwardRef<RecorderHandle, RecorderProps>((props, 
       doEnd();
     }
 
+    function handleKeyDown(e: KeyboardEvent){
+      if(e.key === 'Enter'){
+        if (e.cancelable) {
+          e.preventDefault();
+        }
+        ts = Date.now();
+        setStatus('recording');
+        if (onStart) {
+          onStart();
+        }
+      }
+    }
+
+    function handleKeyUp(e: KeyboardEvent){
+      if(e.key === 'Enter'){
+        if (!ts) return;
+        setStatus('inited');
+        doEnd();
+      }
+    }
+
     wrapper.addEventListener('touchstart', handleTouchStart);
     wrapper.addEventListener('touchmove', handleTouchMove, passive);
     wrapper.addEventListener('touchend', handleTouchEnd);
@@ -125,6 +146,8 @@ export const Recorder = React.forwardRef<RecorderHandle, RecorderProps>((props, 
     wrapper.addEventListener('mousedown', handleMouseDown);
     wrapper.addEventListener('mouseleave', handleMouseLeave);
     wrapper.addEventListener('mouseup', handleMouseUp);
+    wrapper.addEventListener('keydown', handleKeyDown);
+    wrapper.addEventListener('keyup', handleKeyUp);
 
     return () => {
       wrapper.removeEventListener('touchstart', handleTouchStart);
@@ -153,7 +176,7 @@ export const Recorder = React.forwardRef<RecorderHandle, RecorderProps>((props, 
           <span>{trans(isCancel ? 'release2cancel' : 'releaseOrSwipe')}</span>
         </Flex>
       )}
-      <div className="Recorder-btn" role="button" aria-label={trans('hold2talk')}>
+      <div className="Recorder-btn" role="button" aria-label={trans('hold2talk')} tabIndex={0}>
         <span>{trans(btnTextMap[status])}</span>
       </div>
     </div>

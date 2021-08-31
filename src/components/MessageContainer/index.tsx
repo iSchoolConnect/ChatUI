@@ -95,7 +95,7 @@ export const MessageContainer = React.forwardRef<MessageContainerHandle, Message
     }
 
     return (
-      <div className="MessageContainer" ref={messagesRef} tabIndex={-1}>
+      <div className="MessageContainer" ref={messagesRef}>
         {renderBeforeMessageList && renderBeforeMessageList()}
         <PullToRefresh
           onRefresh={onRefresh}

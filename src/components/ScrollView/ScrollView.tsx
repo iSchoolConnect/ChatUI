@@ -82,7 +82,7 @@ export const ScrollView = React.forwardRef<ScrollViewHandle, ScrollViewProps<any
       {...other}
     >
       {hasControls && (
-        <IconButton tabIndex={-1} className="ScrollView-control" icon="chevron-left" onClick={handlePrev} />
+        <IconButton aria-label="navigate-left" tabIndex={-1} className="ScrollView-control" icon="chevron-left" onClick={handlePrev} />
       )}
       {/* eslint-disable jsx-a11y/no-noninteractive-tabindex */}
       <div tabIndex={0} className="ScrollView-scroller" ref={scrollerRef} onScroll={onScroll}>
@@ -100,7 +100,7 @@ export const ScrollView = React.forwardRef<ScrollViewHandle, ScrollViewProps<any
         </div>
       </div>
       {hasControls && (
-        <IconButton tabIndex={-1} className="ScrollView-control" icon="chevron-right" onClick={handleNext} />
+        <IconButton aria-label="navigate-right" tabIndex={-1} className="ScrollView-control" icon="chevron-right" onClick={handleNext} />
       )}
     </div>
   );

@@ -209,6 +209,7 @@ export class PullToRefresh extends React.Component<PullToRefreshProps, PullToRef
         ref={this.wrapperRef}
         onScroll={onScroll}
         tabIndex={0}
+        role="scroller"
       >
         <div className="PullToRefresh-inner">
           <div

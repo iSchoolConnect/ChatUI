@@ -65,8 +65,8 @@ const Message = (props: MessageProps) => {
         className="Message-content"
         role="alert"
         aria-live="polite"
-        aria-relevant="additions"
-        aria-atomic="false"
+        aria-relevant="text"
+        aria-atomic="true"
       >
         {user && user.avatar && <Avatar src={user.avatar} shape="square" />}
         {type === 'typing' ? <Typing /> : renderMessageContent(msg)}

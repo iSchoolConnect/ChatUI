@@ -61,7 +61,13 @@ const Message = (props: MessageProps) => {
           <Time date={msg.createdAt} />
         </div>
       )}
-      <div className="Message-content" role="alert" aria-live="assertive" aria-atomic="false">
+      <div
+        className="Message-content"
+        role="alert"
+        aria-live="polite"
+        aria-relevant="text"
+        aria-atomic="true"
+      >
         {user && user.avatar && <Avatar src={user.avatar} shape="square" />}
         {type === 'typing' ? <Typing /> : renderMessageContent(msg)}
       </div>

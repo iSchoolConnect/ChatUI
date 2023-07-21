@@ -55,19 +55,19 @@ const Message = (props: MessageProps) => {
   }
 
   return (
-    <div className={clsx('Message', msg.position)} data-type={type} key={id}>
+    <div className={clsx('Message', msg.position)} data-type={type} key={id} tabIndex={0}>
       {msg.hasTime && msg.createdAt && (
         <div className="Message-meta">
           <Time date={msg.createdAt} />
         </div>
       )}
-      <div
-        className="Message-content"
-        role="alert"
-        aria-live="polite"
-        aria-relevant="text"
-        aria-atomic="true"
-      >
+      <div className="Message-content" role="alert" aria-live="polite">
+        {/* {msg.position === 'right' && type !== 'first' && (
+          <span className="sender-label screen-reader" >You Said:</span>
+        )}
+        {msg.position === 'left' && type !== 'first' && (
+          <span className="sender-label screen-reader">Casie Said:</span>
+        )} */}
         {user && user.avatar && <Avatar src={user.avatar} shape="square" />}
         {type === 'typing' ? <Typing /> : renderMessageContent(msg)}
       </div>

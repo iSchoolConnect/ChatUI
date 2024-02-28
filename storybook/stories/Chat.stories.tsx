@@ -33,7 +33,7 @@ export default {
 const initialMessages = [
   {
     type: 'text',
-    content: { text: '主人好，我是智能助理，你的贴心小助手~' },
+    content: { text: 'Hello master, I am an intelligent assistant' },
     user: { avatar: '//gw.alicdn.com/tfs/TB1DYHLwMHqK1RjSZFEXXcGMXXa-56-62.svg' },
   },
   {
@@ -44,27 +44,27 @@ const initialMessages = [
   },
 ];
 
-// 默认快捷短语，可选
+//Default shortcut phrase, optional
 const defaultQuickReplies = [
   {
     icon: 'message',
-    name: '联系人工服务',
+    name: 'Contact human service',
     code: 'q1',
     isNew: true,
     isHighlight: true,
   },
   {
-    name: '短语1',
+    name: 'Phrase 1',
     code: 'q2',
     isNew: true,
   },
   {
-    name: '短语2',
+    name: 'Phrase 2',
     code: 'q3',
     isHighlight: true,
   },
   {
-    name: '短语3',
+    name: 'Phrase 3',
     code: 'q4',
   },
 ];
@@ -90,7 +90,9 @@ export const Default = (args: ChatProps) => {
       setTimeout(() => {
         appendMsg({
           type: 'text',
-          content: { text: '亲，您遇到什么问题啦？请简要描述您的问题~' },
+          content: {
+            text: 'Dear, what problem are you encountering? Please briefly describe your problem',
+          },
         });
       }, 1000);
     }
@@ -103,12 +105,12 @@ export const Default = (args: ChatProps) => {
     if (item.code === 'q1') {
       replace([
         {
-          name: '短语a',
+          name: 'Phrase a',
           code: 'qa',
           isHighlight: true,
         },
         {
-          name: '短语b',
+          name: 'Phrase b',
           code: 'qb',
         },
       ]);
@@ -118,7 +120,7 @@ export const Default = (args: ChatProps) => {
   function renderMessageContent(msg: MessageProps) {
     const { type, content } = msg;
 
-    // 根据消息类型来渲染
+    // Render based on message type
     switch (type) {
       case 'text':
         return <Bubble content={content.text} />;
@@ -136,7 +138,7 @@ export const Default = (args: ChatProps) => {
   return (
     <Chat
       {...args}
-      navbar={{ title: '智能助理' }}
+      navbar={{ title: 'Intelligent Assistant' }}
       toolbar={[
         {
           type: 'photo',

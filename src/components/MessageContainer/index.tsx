@@ -103,7 +103,13 @@ export const MessageContainer = React.forwardRef<MessageContainerHandle, Message
           loadMoreText={loadMoreText}
           ref={scroller}
         >
-          <div className="MessageList">
+          <div
+            className="MessageList"
+            role="log"
+            aria-live="polite"
+            aria-relevant="text"
+            aria-atomic="false"
+          >
             {messages.map((msg) => (
               <Message {...msg} renderMessageContent={renderMessageContent} key={msg._id} />
             ))}

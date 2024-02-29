@@ -55,7 +55,7 @@ const Message = (props: MessageProps) => {
   }
 
   return (
-    <div className={clsx('Message', msg.position)} data-type={type} key={id}>
+    <div role="log" className={clsx('Message', msg.position)} data-type={type} key={id}>
       {msg.hasTime && msg.createdAt && (
         <div className="Message-meta">
           <Time date={msg.createdAt} />

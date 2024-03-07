@@ -1,5 +1,5 @@
-import React from 'react';
 import clsx from 'clsx';
+import React from 'react';
 
 export type ButtonVariant = 'text';
 
@@ -16,6 +16,7 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   loading?: boolean;
   disabled?: boolean;
   onClick?: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+  onEnter?: (event: React.KeyboardEvent<HTMLButtonElement>) => void;
 }
 
 function composeClass(type?: string) {
@@ -34,12 +35,18 @@ export const Button: React.FC<ButtonProps> = (props) => {
     disabled = false,
     children,
     onClick,
+    onEnter,
     ...other
   } = props;
 
   function handleClick(e: React.MouseEvent<HTMLButtonElement, MouseEvent>) {
     if (!disabled && !loading && onClick) {
       onClick(e);
+    }
+  }
+  function handleKeyDown(event: React.KeyboardEvent<HTMLButtonElement>) {
+    if (!disabled && !loading && event.key === 'Enter' && onEnter) {
+      onEnter(event);
     }
   }
 
@@ -58,6 +65,8 @@ export const Button: React.FC<ButtonProps> = (props) => {
       type="button"
       disabled={disabled}
       onClick={handleClick}
+      onKeyDown={handleKeyDown}
+      tabIndex={0}
       {...other}
     >
       {label || children}

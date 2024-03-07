@@ -166,10 +166,15 @@ export const Composer = React.forwardRef<ComposerHandle, ComposerProps>((props, 
   }
 
   function handleInputKeyDown(e: React.KeyboardEvent<HTMLTextAreaElement>) {
-    if (!e.shiftKey && e.keyCode === 13) {
+    if (!e.shiftKey && e.key === 'Enter') {
       send();
       e.preventDefault();
     }
+  }
+
+  function handleActionButtonKeyDown(e: React.KeyboardEvent<HTMLButtonElement>) {
+    send();
+    e.preventDefault();
   }
 
   function handleTextChange(value: string, e: React.ChangeEvent) {
@@ -287,6 +292,7 @@ export const Composer = React.forwardRef<ComposerHandle, ComposerProps>((props, 
           className="Composer-sendBtn"
           icon="paper-plane"
           color="primary"
+          onEnter={handleActionButtonKeyDown}
           disabled={!text}
           onMouseDown={handleSendBtnClick}
           aria-label="发送"
@@ -303,6 +309,7 @@ export const Composer = React.forwardRef<ComposerHandle, ComposerProps>((props, 
             className="Composer-inputTypeBtn"
             data-icon={inputTypeIcon}
             icon={inputTypeIcon}
+            onEnter={handleActionButtonKeyDown}
             onClick={handleInputTypeChange}
             aria-label={isInputText ? 'switch to voice input' : 'switch to keyboard input'}
           />
@@ -329,6 +336,7 @@ export const Composer = React.forwardRef<ComposerHandle, ComposerProps>((props, 
             color="primary"
             onMouseDown={handleSendBtnClick}
             aria-label="send"
+            onEnter={handleActionButtonKeyDown}
           />
         )}
       </div>

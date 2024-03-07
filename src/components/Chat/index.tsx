@@ -1,5 +1,5 @@
 /* eslint-disable react/forbid-prop-types */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { LocaleProvider } from '../LocaleProvider';
 import { Navbar } from '../Navbar';
 import { MessageContainer } from '../MessageContainer';

@@ -96,9 +96,7 @@ export const ScrollView = React.forwardRef<ScrollViewHandle, ScrollViewProps<any
         className="ScrollView-scroller"
         ref={scrollerRef}
         onScroll={onScroll}
-        role="navigation"
-        aria-live="polite"
-        aria-atomic="true"
+        role="list"
       >
         <div className="ScrollView-inner">
           {data.map((item, i) => (

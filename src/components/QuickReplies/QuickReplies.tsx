@@ -24,10 +24,6 @@ const QuickReplies = (props: QuickRepliesProps) => {
     }
   }, [items]);
 
-  const a = document.createElement('h1');
-  a.textContent = JSON.stringify(items);
-  document.body.appendChild(a);
-
   if (!items.length) return null;
 
   return (

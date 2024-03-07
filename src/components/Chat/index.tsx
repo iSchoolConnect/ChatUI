@@ -177,19 +177,6 @@ export const Chat = React.forwardRef<HTMLDivElement, ChatProps>((props, ref) => 
     Composer = DComposer,
   } = props;
 
-  const [availableQuickReplies, setAvailableQuickReplies] = useState<QuickReplyItemProps[]>([]);
-  /**
-   * Adding delay in rendering quick replies to prevent
-   * the screen reader reads the quick replies before the messages
-   */
-  useEffect(() => {
-    setAvailableQuickReplies([]);
-    const timeoutId = setTimeout(() => {
-      setAvailableQuickReplies(quickReplies);
-    }, 500);
-    return () => clearTimeout(timeoutId);
-  }, [quickReplies]);
-
   return (
     <LocaleProvider locale={locale} locales={locales}>
       <div className="ChatApp" ref={ref}>
@@ -208,7 +195,7 @@ export const Chat = React.forwardRef<HTMLDivElement, ChatProps>((props, ref) => 
             renderQuickReplies()
           ) : (
             <QuickReplies
-              items={availableQuickReplies}
+              items={quickReplies}
               visible={quickRepliesVisible}
               onClick={onQuickReplyClick}
               onScroll={onQuickReplyScroll}

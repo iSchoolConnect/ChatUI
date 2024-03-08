@@ -244,10 +244,11 @@ export const Composer = React.forwardRef<ComposerHandle, ComposerProps>((props, 
 
   const renderInput = () => (
     <div className={clsx({ 'S--invisible': !isInputText })}>
-      <label htmlFor="inputField" className="hidden" aria-hidden="true">
+      <label htmlFor="Composer-input-element" className="sr-only">
         {placeholder}
       </label>
       <Input
+        id="Composer-input-element"
         className="Composer-input"
         value={text}
         rows={1}

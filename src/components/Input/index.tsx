@@ -131,6 +131,7 @@ export const Input = React.forwardRef<InputRef, InputProps>((props, ref) => {
     value,
     placeholder,
     maxLength,
+    autoComplete: 'off',
     onChange: handleChange,
   };
 

@@ -45,7 +45,7 @@ export const Composer = React.forwardRef<ComposerHandle, ComposerProps>((props, 
     text: initialText = '',
     inputType: initialInputType = 'text',
     wideBreakpoint,
-    placeholder = '请输入...',
+    placeholder = 'Send a message...',
     recorder = {},
     onInputTypeChange,
     onFocus,
@@ -244,6 +244,9 @@ export const Composer = React.forwardRef<ComposerHandle, ComposerProps>((props, 
 
   const renderInput = () => (
     <div className={clsx({ 'S--invisible': !isInputText })}>
+      <label htmlFor="inputField" className="hidden" aria-hidden="true">
+        {placeholder}
+      </label>
       <Input
         className="Composer-input"
         value={text}

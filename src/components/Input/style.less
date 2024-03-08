@@ -5,16 +5,18 @@
     &.has-counter {
       padding-bottom: 20px;
 
-      & + .HelpText {
+      &+.HelpText {
         margin-top: -18px;
       }
     }
+
     .Input {
       padding: 2px 12px;
       border-bottom: 1px solid rgba(0, 0, 0, 0.12);
       border-radius: 0;
       background-color: transparent;
     }
+
     .Input-counter {
       bottom: 0;
       margin-top: 0;
@@ -40,14 +42,17 @@
   &:focus {
     outline: none;
   }
+
   &:focus:not([disabled]):not([readonly]) {
-    & ~ .Input-line {
+    &~.Input-line {
+
       &:before,
       &:after {
         width: 50%;
       }
     }
   }
+
   &::placeholder {
     color: #ccc;
   }
@@ -67,9 +72,11 @@
     background: var(--brand-1);
     transition: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   }
+
   &:before {
     left: 50%;
   }
+
   &:after {
     right: 50%;
   }
@@ -84,3 +91,4 @@
   color: var(--gray-3);
   font-size: 12px;
 }
+

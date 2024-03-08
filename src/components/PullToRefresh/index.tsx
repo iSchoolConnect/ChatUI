@@ -204,13 +204,7 @@ export class PullToRefresh extends React.Component<PullToRefreshProps, PullToRef
 
     return (
       // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
-      <div
-        className="PullToRefresh"
-        ref={this.wrapperRef}
-        onScroll={onScroll}
-        tabIndex={0}
-        role="scroller"
-      >
+      <div className="PullToRefresh" ref={this.wrapperRef} onScroll={onScroll} tabIndex={0}>
         <div className="PullToRefresh-inner">
           <div
             className={clsx('PullToRefresh-content', {

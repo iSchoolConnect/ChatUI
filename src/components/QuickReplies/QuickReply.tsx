@@ -32,7 +32,6 @@ export const QuickReply = (props: QuickReplyProps) => {
       })}
       type="button"
       data-code={item.code}
-      aria-label={`QuickReply: ${item.name}`}
       onClick={handleClick}
     >
       <div className="QuickReply-inner">

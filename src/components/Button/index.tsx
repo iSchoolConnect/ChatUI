@@ -66,7 +66,6 @@ export const Button: React.FC<ButtonProps> = (props) => {
       disabled={disabled}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
-      tabIndex={0}
       {...other}
     >
       {label || children}

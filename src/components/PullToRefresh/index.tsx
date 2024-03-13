@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/no-noninteractive-tabindex */
 import React, { createRef } from 'react';
 import clsx from 'clsx';
 import { setTransform } from '../../utils/style';
@@ -203,7 +202,6 @@ export class PullToRefresh extends React.Component<PullToRefreshProps, PullToRef
     const { status, distance, dropped, disabled } = this.state;
 
     return (
-      // eslint-disable-next-line jsx-a11y/no-noninteractive-tabindex
       <div className="PullToRefresh" ref={this.wrapperRef} onScroll={onScroll}>
         <div className="PullToRefresh-inner">
           <div

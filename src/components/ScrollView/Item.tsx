@@ -38,6 +38,7 @@ export const Item: React.FC<ScrollViewItemProps> = (props) => {
 
   return (
     <div
+      role="listitem"
       className={clsx('ScrollView-item', {
         'slide-in-right-item': effect === 'slide',
       })}

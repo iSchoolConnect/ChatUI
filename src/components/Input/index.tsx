@@ -20,6 +20,7 @@ export type InputProps = {
   multiline?: boolean;
   autoSize?: boolean;
   disabled?: boolean;
+  id?: string;
   enterKeyHint?: 'enter' | 'done' | 'go' | 'next' | 'previous' | 'search' | 'send';
   onChange?: (
     value: string,
@@ -45,6 +46,7 @@ export const Input = React.forwardRef<InputRef, InputProps>((props, ref) => {
     multiline,
     autoSize,
     onChange,
+    id,
     ...other
   } = props;
 
@@ -131,6 +133,8 @@ export const Input = React.forwardRef<InputRef, InputProps>((props, ref) => {
     value,
     placeholder,
     maxLength,
+    autoComplete: 'off',
+    id,
     onChange: handleChange,
   };
 

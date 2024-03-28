@@ -3,7 +3,7 @@
   align-items: flex-end;
   padding: 8px;
 
-  > div + div {
+  >div+div {
     margin-left: 8px;
   }
 }
@@ -14,7 +14,9 @@
     border-radius: 50%;
     font-size: 26px;
   }
+
   .IconBtn:not(:disabled) {
+
     &,
     &:hover,
     &:active {
@@ -22,6 +24,7 @@
       color: var(--brand-1);
     }
   }
+
   .Btn--primary:not(:disabled) {
     background: var(--brand-1);
     color: var(--white);
@@ -53,7 +56,7 @@
   caret-color: var(--brand-2);
   transition: border-color .15s ease-in-out;
 
-  &:placeholder-shown + .Composer-sendBtn {
+  &:placeholder-shown+.Composer-sendBtn {
     visibility: hidden;
     opacity: 0;
   }
@@ -70,14 +73,17 @@
     &:first-child {
       margin: 0;
     }
+
     &:hover {
       color: var(--brand-1);
     }
+
     &:focus:before,
     &:focus:after {
       opacity: 0;
     }
   }
+
   img {
     display: block;
     width: 28px;
@@ -97,7 +103,19 @@
       border-color: var(--brand-1);
     }
   }
+
   .Composer-actions {
     padding: 4px 0;
   }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 }

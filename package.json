@@ -1,6 +1,6 @@
 {
-  "name": "@isc/chatui-core",
-  "version": "1.0.9",
+  "name": "@ischoolconnect/chatui-core",
+  "version": "1.0.8",
   "description": "The React library for Chatbot UI",
   "main": "lib/index.js",
   "module": "es/index.js",
@@ -19,7 +19,10 @@
     "prepublishOnly": "npm run build & npm run build:umd",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "publish:patch": "npm run build && npm version patch && npm publish --registry https://npm.pkg.github.com/ --access restricted",
+    "publish:major": "npm run build && npm version major && npm publish --registry https://npm.pkg.github.com/ --access restricted",
+    "publish:minor": "npm run build && npm version minor && npm publish --registry https://npm.pkg.github.com/ --access restricted"
   },
   "dependencies": {
     "@babel/runtime": "^7.12.5",
@@ -103,7 +106,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/alibaba/ChatUI"
+    "url": "https://github.com/iSchoolConnect/ChatUI.git"
   },
   "author": "akai <akainice@gmail.com>",
   "license": "MIT"
